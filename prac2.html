@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+        }
+
+        .tri {
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 17px;
+            left: 5px;
+            border: 8px solid #000;
+            border-style: dashed dashed solid dashed;
+            border-color: transparent transparent #fff transparent;
+
+        }
+
+        .ipt {
+            color: #999;
+        }
+
+        .rep {
+            display: none;
+            margin-top: 8px;
+            height: 25px;
+            width: 170px;
+            font-size: larger;
+            border: 1px solid #999;
+            box-shadow: 0px -2px 2px #999;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text" class="ipt" placeholder="input something!">
+        <button class="btn">search</button>
+        <div class="tri"></div>
+        <div class="rep"></div>
+    </div>
+
+    <script>
+        var ipt = document.querySelector('.ipt')
+        var rep = document.querySelector('.rep')
+
+        document.addEventListener('keyup', function(e) {
+            rep.innerHTML = ipt.value;
+            console.log(rep.innerHTML);
+            if (rep.innerHTML != '') {
+                rep.style.display = 'block';
+            }
+            else {
+                rep.style.display = 'none';
+            }
+                
+        })
+
+        ipt.addEventListener('focus', function() {
+            // rep.style.display = 'block';
+            this.style.color = '#333';
+            // if (this.value = 'input something!') {
+            //     this.value = '';
+            // }
+            // if (this.value = '') {
+            //     this.value = 'input something!'
+            // }
+        })
+        // ipt.addEventListener('click', function() {
+        //     if (this.value = 'input something!') {
+        //     this.value = '';
+        //     }
+
+        
+        // })
+
+
+        ipt.addEventListener('blur', function() {
+            rep.style.display = 'none';
+        })
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            float: left;
+            margin: 2px;
+            width: 40px;
+            height: 40px;
+            background-color: rgb(19, 19, 19);
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hours"></div>
+    <div class="minutes"></div>
+    <div class="seconds"></div>
+    
+    <script>
+        var hours = document.querySelector('.hours')
+        var minutes = document.querySelector('.minutes')
+        var seconds = document.querySelector('.seconds')
+
+
+        var t = Number(prompt('input seconds'))*1000;
+        console.log(t);
+        var s = t/1000
+        setTimeout(function(){
+            alert('Time\'s up!')
+        }, t + 1000)
+        //到时间提示
+
+        var i = s - 1
+
+        hours.innerHTML = parseInt(i/3600)
+        minutes.innerHTML = parseInt(i%3600/60)
+        seconds.innerHTML = parseInt(i%3600%60)
+
+
+        var co = setInterval(function() {
+            hours.innerHTML = parseInt(i/3600)
+            minutes.innerHTML = parseInt(i%3600/60)
+            seconds.innerHTML = parseInt(i%3600%60)
+            if (i <= 0) {
+                clearInterval(co)
+            }
+        },1000)
+
+
+        var val = setInterval(function(){
+            if (i > 0) {
+                console.log(i);
+                i--;
+            }
+            else {
+                clearInterval(val)
+            }
+        }, 1000)
+
+        //定时器每隔1000ms进行一次检查，方法为setInterval 循环-1000ms
+
+    </script>
+</body>
+</html>

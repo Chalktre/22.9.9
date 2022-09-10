@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded',function(){
+            function loop() {
+                console.log('5s');
+                setTimeout(loop, 1000)
+            }
+            //这里在不停创造新的计时器（应该是匿名），所以无法被clearTimeout捕获
+            var lop = setTimeout(loop, 1000)
+            console.log('done');
+
+            var div = document.querySelector('div')
+            
+            div.addEventListener('click', function(){
+                clearTimeout(lop)
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <div>
+        abc
+    </div>
+    <button class="btn">btn</button>
+</body>
+</html>
